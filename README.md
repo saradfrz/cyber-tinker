@@ -19,32 +19,88 @@ World Wide News is a news feeder project focused on collecting and aggregating n
 
 ### Installation
 
-1. Clone the repository:
+#### 1. Clone the repository:
 
     ```bash
     git clone https://github.com/yourusername/world-wide-news.git
     ```
 
-2. Install the required dependencies:
+#### 2. Activate WSL2 inside VSCode
+- Ensure you have WSL2 installed and configured on your machine.
+- Open Visual Studio Code.
+- Press `Ctrl+Shift+P` to open the command palette.
+- Type and select "Remote-WSL: New Window" to open a new VSCode window connected to WSL2.
+
+#### 3. Create a virtual environment (.venv)
+- Open a terminal inside VSCode connected to your WSL2 environment.
+- Navigate to the desired directory where you want to create the virtual environment.
+- Run the following commands:
+  ```bash
+  python3 -m venv .venv
+  source .venv/bin/activate
+  ```
+
+#### 4. Install the required dependencies:
 
     ```bash
     pip install -r requirements.txt
-    ```
 
-3. Run the application:
+#### 5. Install Airflow
+- With the virtual environment activated, run the following command:
+  ```bash
+  pip install apache-airflow
+  ```
 
-    ```bash
-    python app.py
-    ```
+#### 6. Install PostgreSQL inside WSL2
+- Update package lists:
+  ```bash
+  sudo apt update
+  ```
+- Install PostgreSQL:
+  ```bash
+  sudo apt install postgresql
+  ```
 
-4. Access the application via your web browser at `http://localhost:5000`.
+#### 7. Configure PostgreSQL to run as the Airflow database
+- Switch to the PostgreSQL user:
+  ```bash
+  sudo -i -u postgres
+  ```
+- Access the PostgreSQL shell:
+  ```bash
+  psql
+  ```
+- Create a user and database for Airflow:
+  ```sql
+  CREATE USER airflow_user WITH PASSWORD 'your_password';
+  CREATE DATABASE airflow_db;
+  GRANT ALL PRIVILEGES ON DATABASE airflow_db TO airflow_user;
+  ```
+- Exit the PostgreSQL shell:
+  ```sql
+  \q
+  ```
+- Exit the PostgreSQL user:
+  ```bash
+  exit
+  ```
 
+#### 8. Create a demo DAG
+- Navigate to the Airflow home directory (e.g., `~/airflow`).
+- Inside the directory, create a Python script for your demo DAG (e.g., `demo_dag.py`).
+- Define your DAG in the script.
+
+#### 9. Run the DAG
+- Start the Airflow scheduler and webserver:
+  ```bash
+  airflow scheduler &
+  airflow webserver &
+  ```
+- Access the Airflow web interface in your browser (http://localhost:8080 by default).
+- Trigger your demo DAG from the Airflow web interface.
+
+```
 ## Usage
-
-- Browse through different news categories.
-- Customize your news feed preferences.
-- Search for specific news topics or keywords.
-- Stay updated with the latest global news developments.
 
 ## Contributing
 
