@@ -34,49 +34,49 @@ World Wide News is a news feeder project focused on collecting and aggregating n
 #### 3. Create a virtual environment (.venv)
 
 
-#### Install Python 3 and pip
-sudo apt install python3 python3-pip
+- Install Python 3 and pip
+`sudo apt install python3 python3-pip`
 
-#### Verify Python installation
-python3 --version
+- Verify Python installation
+`python3 --version`
 
-#### Install virtualenv using pip
-sudo pip3 install virtualenv
+- Install virtualenv using pip
+`sudo pip3 install virtualenv`
 
-#### Create a virtual environment named .venv
-virtualenv .venv
+- Create a virtual environment named .venv
+`virtualenv .venv`
 
-#### Activate the virtual environment
-source .venv/bin/activate
+- Activate the virtual environment
+`source .venv/bin/activate`
 
-#### Verify virtual environment activation by checking Python version
-python --version
+- Verify virtual environment activation by checking Python version
+`python --version`
 
-#### Now you're inside the virtual environment (.venv)
-#### You can install packages and run Python scripts without affecting system-wide Python installation
+Now you're inside the virtual environment (.venv), you can install packages and run Python scripts without affecting system-wide Python installation
+
 - To deactivate the virtual environment, simply run:
-deactivate
+`deactivate`
 
 #### 4. Install the required dependencies:
 
-    ```bash
-    pip install -r requirements.txt
-
-#### 5. Install Airflow
-- With the virtual environment activated, run the following command:
-  ```bash
-  pip install apache-airflow
-  ```
+`pip install -r requirements.txt`
 
 #### 6. Install PostgreSQL inside WSL2
-- Update package lists:
-  ```bash
-  sudo apt update
-  ```
+- Update package lists:<br>
+`sudo apt-get update`<br>
+`sudo apt-get upgrade`<br>
 - Install PostgreSQL:
-  ```bash
-  sudo apt install postgresql
-  ```
+
+https://www.postgresql.org/download/linux/ubuntu/
+
+##### Troubleshoot:
+
+- `pg_hba.config`: /etc/postgresql/16/main/pg_hba.conf
+- https://stackoverflow.com/questions/31645550/postgresql-why-psql-cant-connect-to-server
+- https://askubuntu.com/questions/256534/how-do-i-find-the-path-to-pg-hba-conf-from-the-shell
+- https://stackoverflow.com/questions/66496890/vs-code-nopermissions-filesystemerror-error-eacces-permission-denied
+- https://askubuntu.com/questions/54221/how-to-edit-files-in-a-terminal-with-nano
+
 
 #### 7. Configure PostgreSQL to run as the Airflow database
 - Switch to the PostgreSQL user:
