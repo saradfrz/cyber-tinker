@@ -32,13 +32,30 @@ World Wide News is a news feeder project focused on collecting and aggregating n
 - Type and select "Remote-WSL: New Window" to open a new VSCode window connected to WSL2.
 
 #### 3. Create a virtual environment (.venv)
-- Open a terminal inside VSCode connected to your WSL2 environment.
-- Navigate to the desired directory where you want to create the virtual environment.
-- Run the following commands:
-  ```bash
-  python3 -m venv .venv
-  source .venv/bin/activate
-  ```
+
+
+# Install Python 3 and pip
+sudo apt install python3 python3-pip
+
+# Verify Python installation
+python3 --version
+
+# Install virtualenv using pip
+sudo pip3 install virtualenv
+
+# Create a virtual environment named .venv
+virtualenv .venv
+
+# Activate the virtual environment
+source .venv/bin/activate
+
+# Verify virtual environment activation by checking Python version
+python --version
+
+# Now you're inside the virtual environment (.venv)
+# You can install packages and run Python scripts without affecting system-wide Python installation
+- To deactivate the virtual environment, simply run:
+deactivate
 
 #### 4. Install the required dependencies:
 
