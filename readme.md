@@ -34,26 +34,26 @@ World Wide News is a news feeder project focused on collecting and aggregating n
 #### 3. Create a virtual environment (.venv)
 
 
-# Install Python 3 and pip
+#### Install Python 3 and pip
 sudo apt install python3 python3-pip
 
-# Verify Python installation
+#### Verify Python installation
 python3 --version
 
-# Install virtualenv using pip
+#### Install virtualenv using pip
 sudo pip3 install virtualenv
 
-# Create a virtual environment named .venv
+#### Create a virtual environment named .venv
 virtualenv .venv
 
-# Activate the virtual environment
+#### Activate the virtual environment
 source .venv/bin/activate
 
-# Verify virtual environment activation by checking Python version
+#### Verify virtual environment activation by checking Python version
 python --version
 
-# Now you're inside the virtual environment (.venv)
-# You can install packages and run Python scripts without affecting system-wide Python installation
+#### Now you're inside the virtual environment (.venv)
+#### You can install packages and run Python scripts without affecting system-wide Python installation
 - To deactivate the virtual environment, simply run:
 deactivate
 
