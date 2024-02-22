@@ -5,7 +5,7 @@ LABEL maintainer="SaraFernandez"
 # Arguments that can be set with docker build
 ARG AIRFLOW_VERSION=2.8.1
 ARG AIRFLOW_HOME=/opt/airflow
-ARG PYTHON_VERSION=$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)
+ARG PYTHON_VERSION=3.10
 ARG CONSTRAINT_URL=https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt
 
 # Export the environment variable AIRFLOW_HOME where airflow will be installed
@@ -43,7 +43,7 @@ COPY ./constraints-${PYTHON_VERSION}.txt /constraints-${PYTHON_VERSION}.txt
 # Install apache airflow with subpackages
 RUN pip install --upgrade pip && \
     useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow && \
-    pip install apache-airflow[postgres]==${AIRFLOW_VERSION} --constraint /constraints-${PYTHON_VERSION}.txt
+    pip install "apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]==${AIRFLOW_VERSION}" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
 
 # Copy the entrypoint.sh from host to container (at path AIRFLOW_HOME)
 COPY ./entrypoint.sh ./entrypoint.sh
