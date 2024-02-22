@@ -3,15 +3,15 @@
 1. Install WSL
 
 2. Update packages <br>
-`sudo apt update && sudo apt upgrade` <br>
+`sudo apt update && sudo apt upgrade`
  <br>
 3. Install dependencies <br>
-`sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev` <br>
+`sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev`
  <br>
 4. Download Python 3.10 source code <br>
-`wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz` <br>
+`wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz` 
  <br>
-5. Extract the downloaded archive <br>
+5. Extract the downloaded archive 
 `tar -xf Python-3.10.0.tgz` <br>
  <br>
 6. Navigate to the Python source directory <br>
