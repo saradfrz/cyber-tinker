@@ -6,28 +6,29 @@
 `sudo apt update && sudo apt upgrade`
 
 3. Install dependencies <br>
-`sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev`
+`sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev` <br>
+`sudo apt install build-essential zlib1g-dev libffi-dev` 
   
-4. Download Python 3.10 source code <br>
+5. Download Python 3.10 source code <br>
 `wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz` 
   
-5. Extract the downloaded archive 
+6. Extract the downloaded archive <br>
 `tar -xf Python-3.10.0.tgz` <br>
    
-6. Navigate to the Python source directory <br>
+7. Navigate to the Python source directory <br>
 `cd Python-3.10.0` <br>
    
-7. Configure the build <br>
+8. Configure the build <br>
 `./configure enable-optimizations` <br>
    
-8. Build and install Python <br>
+9. Build and install Python <br>
 `make -j$(nproc)` <br>
 `sudo make altinstall` <br>
    
-9. Verify the installation <br>
-`python3.10 version` <br>
+10. Verify the installation <br>
+`python3.10 --version` <br>
    
-10. Cleanup (optional) <br>
+11. Cleanup (optional) <br>
 ``` 
 cd ..
 rm -rf Python-3.10.0
