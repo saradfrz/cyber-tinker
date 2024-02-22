@@ -7,7 +7,8 @@
 
 3. Install dependencies <br>
 `sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev` <br>
-`sudo apt install build-essential zlib1g-dev libffi-dev` 
+`sudo apt install build-essential zlib1g-dev libffi-dev` <br>
+`sudo apt-get update -y && sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils rsync zip unzip gcc && sudo apt-get clean`
 
 ### Install Python from Source
 4. Download Python 3.10 source code <br>
