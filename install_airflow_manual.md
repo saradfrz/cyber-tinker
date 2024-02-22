@@ -8,88 +8,82 @@
 3. Install dependencies <br>
 `sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev` <br>
 `sudo apt install build-essential zlib1g-dev libffi-dev` 
-  
-5. Download Python 3.10 source code <br>
+
+### Install Python from Source
+4. Download Python 3.10 source code <br>
 `wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz` 
   
-6. Extract the downloaded archive <br>
+5. Extract the downloaded archive <br>
 `tar -xf Python-3.10.0.tgz` <br>
    
-7. Navigate to the Python source directory <br>
+6. Navigate to the Python source directory <br>
 `cd Python-3.10.0` <br>
    
-8. Configure the build <br>
+7. Configure the build <br>
 `./configure enable-optimizations` <br>
    
-9. Build and install Python <br>
+8. Build and install Python <br>
 `make -j$(nproc)` <br>
 `sudo make altinstall` <br>
    
-10. Verify the installation <br>
+9. Verify the installation <br>
 `python3.10 --version` <br>
    
-11. Cleanup (optional) <br>
-``` 
-cd ..
-rm -rf Python-3.10.0
-rm Python-3.10.0.tgz
-``` 
+10. Cleanup (optional) <br>
+`cd .. ` <br>
+`rm -rf Python-3.10.0` <br>
+`rm Python-3.10.0.tgz` <br>
  
-11. Create and start a docker container from the Docker image python:3.10.13-slim-bullseye and execute the command /bin/bash in order to have a shell session <br>
-`docker run -it --rm -p 8080:8080 python:3.10.13-slim-bullseye /bin/bash` <br>
-
-12. Print the Python version <br>
-`python -V` <br>
- 
-13. Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file <br>
+### Install Airflow
+11. Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file <br>
 `export AIRFLOW_HOME=/usr/local/airflow` <br>
 
-14. To check that the environment variable has been well exported <br>
+12. To check that the environment variable has been well exported <br>
 `env | grep airflow` <br>
  
-15. Install all tools and dependencies that can be required by Airflow <br>
+13. Install all tools and dependencies that can be required by Airflow <br>
 `apt-get update -y && apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils rsync zip unzip gcc && apt-get clean`
 
-16. Create the user airflow, set its home directory to the value of AIRFLOW_HOME and log into it <br>
+14. Create the user airflow, set its home directory to the value of AIRFLOW_HOME and log into it <br>
 `useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow` <br>
  
-17. Show the file /etc/passwd to check that the airflow user has been created <br>
+15. Show the file /etc/passwd to check that the airflow user has been created <br>
 `cat /etc/passwd | grep airflow` <br>
  
-18. Upgrade pip (already installed since we use the Docker image python 3.5) <br>
+16. Upgrade pip (already installed since we use the Docker image python 3.5) <br>
 `pip install --upgrade pip` <br>
  
-19. Log into airflow <br>
+17. Log into airflow <br>
 `su airflow` <br>
 
-20. Create the virtual env named sandbox  <br>
+18. Create the virtual env named sandbox  <br>
 `python -m venv .sandbox` <br>
  
-21. Activate the virtual environment sandbox <br>
+19. Activate the virtual environment sandbox <br>
 `source .sandbox/bin/activate` <br>
 
-22. Quick Start <br>
+20. Quick Start <br>
 https://airflow.apache.org/docs/apache-airflow/stable/start.html <br>
 
-23. Download the requirement file to install the right version of Airflow’s dependencies <br>
+21. Download the requirement file to install the right version of Airflow’s dependencies <br>
 `export AIRFLOW_VERSION=2.8.1` <br>
 `export PYTHON_VERSION="$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)"` <br>
 `export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"` <br>
   
-24. Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed) <br>
+22. Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed) <br>
 https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html <br>
 `pip install "apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]==${AIRFLOW_VERSION}" --constraint 
   
-25. Initialise the metadatabase <br>
+23. Initialise the metadatabase <br>
 `airflow db init` <br>
 
-26. Create admin user <br>
+24. Create admin user <br>
 `airflow users create -u admin -f admin -l admin -r Admin -e admin@airflow.com -p admin` <br>
 
-27. Start Airflow’s scheduler in background <br>
+25. Start Airflow’s scheduler in background <br>
 `airflow scheduler &` <br>
 
-28. Start Airflow’s webserver in background <br>
+26. Start Airflow’s webserver in background <br>
 `airflow webserver &` <br>
 
 
