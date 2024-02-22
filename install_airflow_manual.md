@@ -43,7 +43,8 @@
  
 13. Install all tools and dependencies that can be required by Airflow <br>
 `cd ..` <br>
-`sudo apt-get update -y && apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils rsync zip unzip gcc && apt-get clean`
+`sudo apt-get update -y &&
+sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils rsync zip unzip gcc && sudo apt-get clean`
 
 14. Create the user airflow, set its home directory to the value of AIRFLOW_HOME and log into it <br>
 `useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow` <br>
