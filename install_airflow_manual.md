@@ -88,18 +88,19 @@ https://airflow.apache.org/docs/apache-airflow/stable/start.html <br>
   
 23. Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed) <br>
 https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html <br>
-`pip install "apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]==${AIRFLOW_VERSION}" --constraint 
+```pip install "apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]==${AIRFLOW_VERSION}" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"```
+
   
-24. Initialise the metadatabase <br>
+25. Initialise the metadatabase <br>
 `airflow db init` <br>
 
-25. Create admin user <br>
+26. Create admin user <br>
 `airflow users create -u admin -f admin -l admin -r Admin -e admin@airflow.com -p admin` <br>
 
-26. Start Airflow’s scheduler in background <br>
+27. Start Airflow’s scheduler in background <br>
 `airflow scheduler &` <br>
 
-27. Start Airflow’s webserver in background <br>
+28. Start Airflow’s webserver in background <br>
 `airflow webserver &` <br>
 
 
