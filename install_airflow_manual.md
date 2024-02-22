@@ -52,40 +52,52 @@ sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bi
 15. Show the file /etc/passwd to check that the airflow user has been created <br>
 `cat /etc/passwd | grep airflow` <br>
  
-16. Upgrade pip (already installed since we use the Docker image python 3.5) <br>
-`pip install --upgrade pip` <br>
+16. Create a password for the airflow user <br>
+`sudo passwd airflow` <br>
+
+17. Add airflow to sudo privikeges
+`sudo visudo`<br>
+
+`%sudo   ALL=(ALL:ALL) ALL`<br>
+Below that line, add the following line to grant sudo privileges to the 'airflow' user:
+`airflow   ALL=(ALL:ALL) ALL`<br>
  
 17. Log into airflow <br>
 `su airflow` <br>
 
-18. Create the virtual env named sandbox  <br>
+18. Create airflow directory
+`sudo mkdir /home/airflow` <br>
+`sudo chown airflow:airflow /home/airflow` <br>
+`cd /home/airflow` <br>
+
+19. Create the virtual env named sandbox  <br>
 `python -m venv .sandbox` <br>
  
-19. Activate the virtual environment sandbox <br>
+20. Activate the virtual environment sandbox <br>
 `source .sandbox/bin/activate` <br>
 
-20. Quick Start <br>
+21. Quick Start <br>
 https://airflow.apache.org/docs/apache-airflow/stable/start.html <br>
 
-21. Download the requirement file to install the right version of Airflow’s dependencies <br>
+22. Download the requirement file to install the right version of Airflow’s dependencies <br>
 `export AIRFLOW_VERSION=2.8.1` <br>
 `export PYTHON_VERSION="$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)"` <br>
 `export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"` <br>
   
-22. Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed) <br>
+23. Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed) <br>
 https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html <br>
 `pip install "apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]==${AIRFLOW_VERSION}" --constraint 
   
-23. Initialise the metadatabase <br>
+24. Initialise the metadatabase <br>
 `airflow db init` <br>
 
-24. Create admin user <br>
+25. Create admin user <br>
 `airflow users create -u admin -f admin -l admin -r Admin -e admin@airflow.com -p admin` <br>
 
-25. Start Airflow’s scheduler in background <br>
+26. Start Airflow’s scheduler in background <br>
 `airflow scheduler &` <br>
 
-26. Start Airflow’s webserver in background <br>
+27. Start Airflow’s webserver in background <br>
 `airflow webserver &` <br>
 
 
