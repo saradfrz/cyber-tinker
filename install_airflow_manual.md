@@ -34,7 +34,7 @@
 `rm -rf Python-3.10.0` <br>
 `rm Python-3.10.0.tgz` <br>
  
-### Install Airflow
+### Configure the Linux ambient
 11. Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file <br>
 `export AIRFLOW_HOME=/usr/local/airflow` <br>
 
@@ -71,11 +71,13 @@ Below that line, add the following line to grant sudo privileges to the 'airflow
 `cd /home/airflow` <br>
 
 19. Create the virtual env named sandbox  <br>
-`python -m venv .sandbox` <br>
+`sudo apt update && sudo apt upgrade` <br>
+`python3.10 -m venv .sandbox` <br>
  
 20. Activate the virtual environment sandbox <br>
 `source .sandbox/bin/activate` <br>
 
+### Install Airflow 
 21. Quick Start <br>
 https://airflow.apache.org/docs/apache-airflow/stable/start.html <br>
 
