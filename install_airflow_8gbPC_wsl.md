@@ -64,7 +64,7 @@ sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bi
 
   Below that line, add the following line to grant sudo privileges to the 'airflow' user:
   
-> `airflow   ALL=(ALL:ALL) ALL`<br>
+> `%airflow   ALL=(ALL:ALL) ALL`<br>
  
 18. Log into airflow <br>
 `su airflow` <br>
