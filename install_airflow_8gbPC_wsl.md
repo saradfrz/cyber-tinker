@@ -12,7 +12,7 @@ sudo apt-get update -y &&
 sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils rsync zip unzip gcc
 && sudo apt-get clean`
 
-### Install Python from Source
+## Install Python from Source
 4. Download Python 3.10 source code <br>
 `wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz` 
   
@@ -37,7 +37,7 @@ sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bi
 `sudo rm -rf Python-3.10.0` <br>
 `sudo rm Python-3.10.0.tgz` <br>
  
-### Configure the Linux ambient
+## Configure the Linux ambient
 11. Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file <br>
 `export AIRFLOW_HOME=/usr/local/airflow` <br>
 
@@ -69,7 +69,7 @@ sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bi
 18. Log into airflow <br>
 `su airflow` <br>
 
-19. Create airflow directory
+19. Create airflow directory <br>
 `sudo mkdir /home/airflow &&
 sudo chown airflow:airflow /home/airflow &&
 cd /home/airflow` <br>
