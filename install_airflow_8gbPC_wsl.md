@@ -1,6 +1,8 @@
 # Install Airflow
 
-1. Install WSL
+1. Install WSL <br>
+`wsl --unregister Ubuntu-22.04` <br>
+`wsl --install Ubuntu-22.04` <br>
 
 2. Update packages <br>
 `sudo apt update && sudo apt upgrade`
@@ -23,7 +25,7 @@ sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bi
 `cd Python-3.10.0` <br>
    
 7. Configure the build <br>
-`./configure` <br>
+` ./configure --enable-optimizations` <br>
    
 8. Build and install Python <br>
 `make -j$(nproc)` <br>
@@ -33,31 +35,49 @@ sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bi
 `python3.10 --version` <br>
    
 10. Cleanup (optional) <br>
-`cd .. ` <br>
-`sudo rm -rf Python-3.10.0` <br>
-`sudo rm Python-3.10.0.tgz` <br>
+`cd .. && sudo rm -rf Python-3.10.0 && sudo rm Python-3.10.0.tgz` <br>
  
-## Configure the Linux ambient
-11. Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file <br>
-`export AIRFLOW_HOME=/usr/local/airflow` <br>
 
-12. To check that the environment variable has been well exported <br>
+## Configure the Linux ambient
+
+11. Create the ssh keys <br>
+`ssh-keygen -t ed25519 -C "your_email@example.com"`
+`git config --global user.email "you@example.com"`
+`git config --global user.name "Your Name"`
+
+
+12. Create airflow directory <br>
+`sudo mkdir /home/airflow` <br>
+`sudo chmod -R 777 /home/airflow` <br>
+`cd /home/airflow` <br>
+
+13. Clone the Airflow project <br>
+`git clone git@github.com:saradfrz/courses-airflow.git . `
+
+
+14. Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file <br>
+`export AIRFLOW_HOME=/home/airflow` <br>
+`export AIRFLOW_VERSION=2.8.1` <br>
+`export PYTHON_VERSION=3.10` <br>
+`export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"` <br>
+
+15. To check that the environment variable has been well exported <br>
 `env | grep airflow` <br>
  
-13. Install all tools and dependencies that can be required by Airflow <br>
+16. Install all tools and dependencies that can be required by Airflow <br>
 `sudo apt-get update -y &&
 sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils rsync zip unzip gcc && sudo apt-get clean`
 
-14. Create the user airflow, set its home directory to the value of AIRFLOW_HOME and log into it <br>
-`useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow` <br>
+17. Create the user airflow, set its home directory to the value of AIRFLOW_HOME and log into it <br>
+`sudo useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow` <br>
  
-15. Show the file /etc/passwd to check that the airflow user has been created <br>
+18. Show the file /etc/passwd to check that the airflow user has been created <br>
 `cat /etc/passwd | grep airflow` <br>
  
-16. Create a password for the airflow user <br>
+19. Create a password for the airflow user <br>
 `sudo passwd airflow` <br>
 
-17. Add airflow to sudo privikeges
+20. Add airflow to sudo privikeges <br>
 `sudo visudo`<br>
 
 > `%sudo   ALL=(ALL:ALL) ALL`<br>
@@ -66,44 +86,36 @@ sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bi
   
 > `%airflow   ALL=(ALL:ALL) ALL`<br>
  
-18. Log into airflow <br>
+21. Log into airflow <br>
 `su airflow` <br>
 
-19. Create airflow directory <br>
-`sudo mkdir /home/airflow &&
-sudo chown airflow:airflow /home/airflow &&
-cd /home/airflow` <br>
-
-20. Create the virtual env named sandbox  <br>
+22. Create the virtual env named sandbox  <br>
 `sudo apt update && sudo apt upgrade` <br>
 `python3.10 -m venv .sandbox` <br>
  
-21. Activate the virtual environment sandbox <br>
+23. Activate the virtual environment sandbox <br>
 `source .sandbox/bin/activate` <br>
 
 ## Install Airflow 
-22. Quick Start <br>
-https://airflow.apache.org/docs/apache-airflow/stable/start.html <br>
-
-23. Download the requirement file to install the right version of Airflow’s dependencies <br>
-`export AIRFLOW_VERSION=2.8.1 && 
-export PYTHON_VERSION="$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)" &&
-export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"` <br>
-  
+Quick Start: https://airflow.apache.org/docs/apache-airflow/stable/start.html <br>
+ 
 24. Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed) <br>
+
 https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html <br>
+
 ```pip install "apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]==${AIRFLOW_VERSION}" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"```
   
 25. Initialise the metadatabase <br>
-`airflow db init` <br>
+`airflow db migrate` <br>
+`airflow connections create-default-connections` <br>
 
-26. Create admin user <br>
+27. Create admin user <br>
 `airflow users create -u admin -f admin -l admin -r Admin -e admin@airflow.com -p admin` <br>
 
-27. Start Airflow’s scheduler in background <br>
+28. Start Airflow’s scheduler in background <br>
 `airflow scheduler &` <br>
 
-28. Start Airflow’s webserver in background <br>
+29. Start Airflow’s webserver in background <br>
 `airflow webserver &` <br>
 
 
