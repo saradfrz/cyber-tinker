@@ -21,7 +21,7 @@ sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bi
 
 ## Install Python from Source
 4. Download Python 3.10 source code <br>
-`wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz` 
+`wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz` <br>
   
 5. Extract the downloaded archive <br>
 `tar -xf Python-3.10.0.tgz` <br>
@@ -46,9 +46,11 @@ sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bi
 ## Configure the Linux ambient
 
 11. Create the ssh keys <br>
-`ssh-keygen -t ed25519 -C "your_email@example.com"`
-`git config --global user.email "you@example.com"`
-`git config --global user.name "Your Name"`
+```
+ssh-keygen -t ed25519 -C "your_email@example.com" &&
+git config --global user.email "you@example.com" &&
+git config --global user.name "Your Name"
+``` 
 
 
 12. Create airflow directory <br>
