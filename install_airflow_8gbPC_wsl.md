@@ -148,15 +148,18 @@ pip install "apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]==${AI
 26. Install the postgres plugin <br>
 ```pip install psycopg2``` <br>
 
-27. Point the airflow installation to the postgres database <br>
+27. Load variables for proper install <br>
 ```
 export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflow:radioactive@localhost:5432/airflow_db"
+export AIRFLOW__CORE__LOAD_EXAMPLES=False`
+export AIRFLOW__CORE__EXECUTOR = LocalExecutor
 ```
 
 ## First use
 
 28. Initialise the metadatabase <br>
 `airflow db migrate` <br>
+
 
 29. Configure `airflow.cfg` to point to the postgres database <br>
 ```
