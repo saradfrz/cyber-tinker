@@ -59,7 +59,7 @@ git config --global user.name "Your Name"
 `cd /home/airflow` <br>
 
 13. Clone the Airflow project <br>
-`git clone git@github.com:saradfrz/courses-airflow.git . `
+`git clone git@github.com:saradfrz/world-wide-news.git . `
 
 
 14. Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file <br>
