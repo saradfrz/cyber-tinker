@@ -290,24 +290,10 @@ source ./start.sh
 
 # Troubleshoot <br>
 
+## Restart
 ```
-source /home/sara/.bash_profile &&
-cd /home/airflow &&
-source .venv/bin/activate
-```
-```
-systemctl start airflow
-systemctl stop airflow
-systemctl restart airflow
-```
-
-```
-sudo apt update
-sudo apt install net-tools
-sudo netstat -tlnp | grep postgres
-```
-```
-ps aux | grep '[w]ebserver'
-ps aux | grep '[s]cheduler'
-kill <PID>
+kill $(ps aux | grep '/home/airflow/.venv/bin/python3.10' | grep -v grep | awk '{print $2}')
+export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflow:radioactive@localhost:5432/airflow_db" && export AIRFLOW__CORE__LOAD_EXAMPLES=False && export AIRFLOW__CORE__EXECUTOR=LocalExecutor
+airflow scheduler &
+airflow webserver &
 ```
