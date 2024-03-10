@@ -93,7 +93,7 @@ ALTER USER postgres WITH PASSWORD 'new_password';
 CREATE DATABASE airflow_db;
 CREATE USER airflow WITH PASSWORD 'radioactive';
 GRANT ALL PRIVILEGES ON DATABASE airflow_db TO airflow;
-GRANT ALL ON SCHEMA public TO airflow;
+GRANT ALL PRIVILEGES ON SCHEMA public TO airflow;
 ```
 
 20. Grant permissions to airflow user connections <br>
