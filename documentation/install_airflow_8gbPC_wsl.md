@@ -29,8 +29,6 @@ RESET_COLOR="\[\033[0m\]"
 # Set the prompt format
 export PS1="$MACHINE_COLOR\h\[$(echo -e "\xF0\x9F\x90\xA7")\]$USER_COLOR\[$USER@\]$RESET_COLOR$DIRECTORY_COLOR\w$RESET_COLOR\\$ "
 ```
-
-
 ```
 source .bash_profile
 ```
@@ -106,18 +104,16 @@ git config --global user.email "you@example.com"
 ```
 git config --global user.name "Your Name"
 ```
-
-
-13. Create airflow directory <br>
+13. Go to airflow directory <br>
 
 ```
-sudo mkdir /home/airflow
+sudo mkdir /home/<user>/airflow
 ```
 ```
-sudo chmod -R 777 /home/airflow
+sudo chmod -R 777 /home/<user>/airflow
 ```
 ```
-cd /home/airflow
+sudo mkdir /home/<user>/airflow
 ```
 
 14. Clone the Airflow project <br>
@@ -127,13 +123,11 @@ git clone git@github.com:saradfrz/world-wide-news.git .
 ```
 
 15. Install all tools and dependencies that can be required by Airflow <br>
-
 ```
 sudo apt-get update -y && 
 sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils rsync zip unzip gcc && sudo apt-get clean
 ```
 ## Install Postgres
-
 16. Install Postgres from Apt repository<br>
 ```bash 
 sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
@@ -146,13 +140,10 @@ sudo apt-get -y install postgresql
 ```
 sudo -i -u postgres
 ```
-
 18. Login to postgres <br>
-
 ```
 psql
 ```
-
 19. Create the airflow database
 ```
 ALTER USER postgres WITH PASSWORD 'new_password';
@@ -169,18 +160,14 @@ GRANT ALL PRIVILEGES ON DATABASE airflow_db TO airflow;
 ```
 GRANT ALL PRIVILEGES ON SCHEMA public TO airflow;
 ```
-
 20. Grant permissions to airflow user connections <br>
 ```
 sudo nano  /etc/postgresql/16/main/pg_hba.conf
 ```
-
-> add the following line <br>
+Add the following line <br>
 ```
 host    all             airflow         127.0.0.1/32            scram-sha-256
 ```
-
-
 **Useful commands** <br>
 ```
 # Open pg_hba.config
