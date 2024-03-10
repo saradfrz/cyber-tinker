@@ -147,7 +147,12 @@ pip install "apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]==${AI
 ```
 
 26. Install the postgres plugin <br>
+```pip install wheel``` <br>
 ```pip install psycopg2``` <br>
+
+
+
+## First use
 
 27. Load variables for proper install <br>
 ```
@@ -155,8 +160,6 @@ export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflow:radioa
 export AIRFLOW__CORE__LOAD_EXAMPLES=False && \
 export AIRFLOW__CORE__EXECUTOR=LocalExecutor
 ```
-
-## First use
 
 28. Initialise the metadatabase <br>
 `airflow db migrate` <br>
@@ -173,17 +176,18 @@ sql_alchemy_conn = postgresql+psycopg2://airflow:radioactive@localhost:5432/airf
 ```
 
 31. Create admin user <br>
-`airflow users create -u admin -f admin -l admin -r Admin -e admin@airflow.com -p mypassword` <br>
+```
+airflow users create -u admin -f admin -l admin -r Admin -e admin@airflow.com -p mypassword
+```
 
-32. Start Airflow’s scheduler in background <br>
-`airflow scheduler &` <br>
+33. Start Airflow’s scheduler in background <br>
+```
+airflow scheduler & && airflow webserver
+```
 
-33. Start Airflow’s webserver in background <br>
-`airflow webserver &` <br>
+## Next uses
 
-## Following uses
-
-28. Execute the start.sh file
+34. Execute the start.sh file
 ```
 source ./start.sh
 ```
