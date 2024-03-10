@@ -157,6 +157,11 @@ export AIRFLOW__CORE__EXECUTOR=LocalExecutor
 28. Initialise the metadatabase <br>
 `airflow db migrate` <br>
 
+In case of error:
+```
+psql -U postgres -d airflow -h localhost -p 5432
+```
+
 
 29. Configure `airflow.cfg` to point to the postgres database <br>
 ```
