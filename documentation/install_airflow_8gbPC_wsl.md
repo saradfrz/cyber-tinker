@@ -66,7 +66,7 @@ sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libns
 `cd /home/airflow` <br>
 
 14. Clone the Airflow project <br>
-`git@github.com:saradfrz/world-wide-news.git . `
+`git clone git@github.com:saradfrz/world-wide-news.git . `
 
 15. Install all tools and dependencies that can be required by Airflow <br>
 `sudo apt-get update -y &&
@@ -96,8 +96,9 @@ GRANT ALL PRIVILEGES ON DATABASE airflow_db TO airflow;
 GRANT ALL ON SCHEMA public TO airflow;
 ```
 
-20. Grant permissions to airflow user connections
+20. Grant permissions to airflow user connections <br>
 `sudo nano  /etc/postgresql/16/main/pg_hba.conf`
+
 > add the following line <br>
     `host    all             airflow         127.0.0.1/32            scram-sha-256`
 
