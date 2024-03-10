@@ -66,7 +66,7 @@ sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libns
 `cd /home/airflow` <br>
 
 14. Clone the Airflow project <br>
-`git clone git@github.com:saradfrz/courses-airflow.git . `
+`git@github.com:saradfrz/world-wide-news.git . `
 
 15. Install all tools and dependencies that can be required by Airflow <br>
 `sudo apt-get update -y &&
