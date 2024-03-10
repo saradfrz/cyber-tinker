@@ -97,10 +97,14 @@ GRANT ALL PRIVILEGES ON SCHEMA public TO airflow;
 ```
 
 20. Grant permissions to airflow user connections <br>
-`sudo nano  /etc/postgresql/16/main/pg_hba.conf`
+```
+sudo nano  /etc/postgresql/16/main/pg_hba.conf
+```
 
 > add the following line <br>
-    `host    all             airflow         127.0.0.1/32            scram-sha-256`
+```
+host    all             airflow         127.0.0.1/32            scram-sha-256
+```
 
 
 **Useful commands** <br>
@@ -159,7 +163,7 @@ export AIRFLOW__CORE__EXECUTOR=LocalExecutor
 
 In case of error:
 ```
-psql -U postgres -d airflow -h localhost -p 5432
+psql -U postgres -d airflow_db -h localhost -p 5432
 ```
 
 
