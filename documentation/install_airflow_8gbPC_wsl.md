@@ -207,7 +207,7 @@ python3.10 -m venv .venv
 
 22. Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file <br>
 ```
-export AIRFLOW_HOME=/home/airflow` && \
+export AIRFLOW_HOME=/home/airflow && \
 export AIRFLOW_VERSION=2.8.1 && \
 export PYTHON_VERSION=3.10
 ```
