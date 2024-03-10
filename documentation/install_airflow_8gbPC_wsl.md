@@ -98,7 +98,7 @@ GRANT ALL ON SCHEMA public TO airflow;
 
 20. Grant permissions to airflow user connections
 `sudo nano  /etc/postgresql/16/main/pg_hba.conf`
-> add the following line
+> add the following line <br>
     `host    all             airflow         127.0.0.1/32            scram-sha-256`
 
 
