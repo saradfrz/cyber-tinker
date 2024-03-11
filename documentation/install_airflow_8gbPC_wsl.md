@@ -160,6 +160,17 @@ GRANT ALL PRIVILEGES ON DATABASE airflow_db TO airflow;
 ```
 GRANT ALL PRIVILEGES ON SCHEMA public TO airflow;
 ```
+```
+CREATE TABLE dataset (
+        id SERIAL NOT NULL, 
+        uri VARCHAR(3000) NOT NULL, 
+        extra JSON NOT NULL, 
+        created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+        updated_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+        is_orphaned BOOLEAN DEFAULT '0' NOT NULL, 
+        CONSTRAINT dataset_pkey PRIMARY KEY (id)
+)
+```
 20. Grant permissions to airflow user connections <br>
 ```
 sudo nano  /etc/postgresql/16/main/pg_hba.conf
