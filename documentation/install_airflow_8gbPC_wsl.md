@@ -121,6 +121,9 @@ sudo mkdir /home/<user>/airflow
 ```
 git clone git@github.com:saradfrz/world-wide-news.git .
 ```
+```
+git config --global --add safe.directory /airflow
+```
 
 15. Install all tools and dependencies that can be required by Airflow <br>
 ```
