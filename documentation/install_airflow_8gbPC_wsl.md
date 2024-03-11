@@ -182,7 +182,12 @@ sudo service postgresql restart
 psql -U username -d database_name -h hostname -p port
 ```
 
-## Create Virtual Environment
+## Install Airflow
+
+**Documentation** <br>
+Quick Start: https://airflow.apache.org/docs/apache-airflow/stable/start.html <br>
+Install from pypi: https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html <br>
+
 21. Create the virtual env named sandbox  <br>
 
 ```
@@ -192,31 +197,22 @@ sudo apt update && sudo apt upgrade
 python3.10 -m venv .venv
 ```
 
+22. Activate the virtual environment sandbox <br>
+```
+source .venv/bin/activate
+```
+
 22. Export the environment variable AIRFLOW_HOME used by Airflow to store the dags folder, logs folder and configuration file <br>
 ```
 export AIRFLOW_HOME=/home/airflow && \
 export AIRFLOW_VERSION=2.8.1 && \
 export PYTHON_VERSION=3.10
+export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflow:radioactive@localhost:5432/airflow_db" && \
+export AIRFLOW__CORE__LOAD_EXAMPLES=False && \
+export AIRFLOW__CORE__EXECUTOR=LocalExecutor
 ```
 
-23. Check that the environment variable has been well exported <br>
-```
-env | grep airflow
-```
- 
-24. Activate the virtual environment sandbox <br>
-```
-source .venv/bin/activate
-```
-
-## Install Airflow
-
-**Documentation** <br>
-Quick Start: https://airflow.apache.org/docs/apache-airflow/stable/start.html <br>
-Install from pypi: https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html <br>
-
-
-25. Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed) <br>
+23. Install the version 2.0.2 of apache-airflow with all subpackages defined between square brackets. (Notice that you can still add subpackages after all, you will use the same command with different subpackages even if Airflow is already installed) <br>
 
 ```
 pip install "apache-airflow[crypto,celery,postgres,cncf.kubernetes,docker]==${AIRFLOW_VERSION}" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
@@ -230,15 +226,6 @@ pip install wheel
 pip install psycopg2
 ```
 
-## First use
-
-27. Load variables for proper install <br>
-```
-export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflow:radioactive@localhost:5432/airflow_db" && \
-export AIRFLOW__CORE__LOAD_EXAMPLES=False && \
-export AIRFLOW__CORE__EXECUTOR=LocalExecutor
-```
-
 28. Initialise the metadatabase <br>
 ```
 airflow db migrate
@@ -248,7 +235,6 @@ In case of error:
 ```
 psql -U postgres -d airflow_db -h localhost -p 5432
 ```
-
 
 29. Configure `airflow.cfg` to point to the postgres database <br>
 ```
