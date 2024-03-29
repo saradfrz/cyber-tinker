@@ -1,6 +1,6 @@
 # CyberTinker
 
-CyberTinker is an Apache Airflow-based project designed to aggregate news about major corporations and leading manufacturers of PC hardware components like motherboards, RAM, and graphics cards
+CyberTinker is an Apache Airflow-based project designed to aggregate news about major corporations and leading manufacturers of PC hardware components like motherboards, RAM, and graphics cards.
 
 
 ## Overview
