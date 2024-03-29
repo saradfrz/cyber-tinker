@@ -1,10 +1,10 @@
-# NewsHarbor
+# CyberTinker
 
-NewsHarbor is an Apache Airflow-based project designed to aggregate news from various sources, providing a centralized platform for monitoring and accessing news content efficiently.
+CyberTinker is an Apache Airflow-based project designed to aggregate news from various sources, providing a centralized platform for monitoring and accessing news content efficiently.
 
 ## Overview
 
-NewsHarbor automates the process of fetching news articles from diverse sources such as RSS feeds, news APIs, and websites. By leveraging Apache Airflow's workflow management capabilities, NewsHarbor allows users to define pipelines for collecting, processing, and storing news data seamlessly.
+CyberTinker automates the process of fetching news articles from diverse sources such as RSS feeds, news APIs, and websites. By leveraging Apache Airflow's workflow management capabilities, CyberTinker allows users to define pipelines for collecting, processing, and storing news data seamlessly.
 
 ## Features
 
@@ -17,10 +17,10 @@ NewsHarbor automates the process of fetching news articles from diverse sources 
 
 ## Getting Started
 
-To get started with NewsHarbor, follow these steps:
+To get started with CyberTinker, follow these steps:
 
 1. **Installation**: Install Apache Airflow and set up the required environment.
-2. **Configuration**: Configure NewsHarbor by specifying the sources from which news articles will be aggregated.
+2. **Configuration**: Configure CyberTinker by specifying the sources from which news articles will be aggregated.
 3. **Define Pipelines**: Define custom Apache Airflow DAGs to orchestrate the news aggregation process.
 4. **Execute Pipelines**: Trigger pipeline runs manually or schedule them to run automatically at specified intervals.
 5. **Monitor Execution**: Monitor pipeline execution status and review logs to ensure smooth operation.
@@ -32,7 +32,7 @@ To get started with NewsHarbor, follow these steps:
 
 ## Contributing
 
-Contributions to NewsHarbor are welcome! If you encounter any issues, have suggestions for improvements, or would like to contribute new features, please feel free to submit a pull request or open an issue on GitHub.
+Contributions to CyberTinker are welcome! If you encounter any issues, have suggestions for improvements, or would like to contribute new features, please feel free to submit a pull request or open an issue on GitHub.
 
 ## License
 
