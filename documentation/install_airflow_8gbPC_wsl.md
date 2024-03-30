@@ -13,7 +13,7 @@ wsl --install Ubuntu-22.04
 Enter new UNIX username: airflow
 ```
 
-3. Configure the terminal
+### Configure the terminal
 ```
 nano .bash_profile
 ```
@@ -31,25 +31,21 @@ source .bash_profile
 ```
 
 ## Configure Linux 
-Customize and execute the file `configure_linux.sh` <br> 
-
-
-4. Install dependencies <br>
+Customize and execute the file `configure_linux.sh` <br>
+https://github.com/saradfrz/cyber-tinker/blob/main/documentation/configure_linux.sh <br>
 ```
-
+touch configure_linux.sh
+nano configure_linux.sh
 ```
 
 ## Install Python from Source
 Execute the file: `install_python_from_source.sh` <br>
-
-## Configure the Linux ambient
-
-
-15. Install all tools and dependencies that can be required by Airflow <br>
+https://github.com/saradfrz/cyber-tinker/blob/main/documentation/install_python_from_source.sh <br>
 ```
-sudo apt-get update -y && 
-sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils rsync zip unzip gcc && sudo apt-get clean
+touch install_python_from_source.sh
+nano install_python_from_source.sh
 ```
+
 ## Install Postgres
 16. Install Postgres from Apt repository<br>
 ```bash 
@@ -58,16 +54,13 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 sudo apt-get update
 sudo apt-get -y install postgresql
 ```
-17. Login with the postgres terminal user <br>
 
 ```
 sudo -i -u postgres
 ```
-18. Login to postgres <br>
 ```
 psql
 ```
-19. Create the airflow database
 ```
 ALTER USER postgres WITH PASSWORD 'new_password';
 ```
@@ -86,15 +79,14 @@ GRANT ALL PRIVILEGES ON SCHEMA public TO airflow;
 ```
 ALTER DATABASE airflow_db OWNER TO airflow
 ```
-20. Grant permissions to airflow user connections <br>
 ```
 sudo nano  /etc/postgresql/16/main/pg_hba.conf
 ```
-Add the following line <br>
+**Add the following line** <br>
 ```
 host    all             airflow         127.0.0.1/32            scram-sha-256
 ```
-**Useful commands** <br>
+#### Useful commands <br>
 ```
 # Open pg_hba.config
 sudo nano  /etc/postgresql/16/main/pg_hba.config
@@ -110,20 +102,12 @@ psql -U username -d database_name -h hostname -p port
 
 ## Install Airflow
 
-**Documentation** <br>
-Quick Start: https://airflow.apache.org/docs/apache-airflow/stable/start.html <br>
-Install from pypi: https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html <br>
-
-21. Create the virtual env named sandbox  <br>
-
 ```
 sudo apt update && sudo apt upgrade
 ```
 ```
 python3.10 -m venv .venv
 ```
-
-22. Activate the virtual environment sandbox <br>
 ```
 source .venv/bin/activate
 ```
