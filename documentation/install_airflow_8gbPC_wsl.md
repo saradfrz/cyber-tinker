@@ -30,97 +30,20 @@ export PS1="$MACHINE_COLOR\h\[$(echo -e "\xF0\x9F\x90\xA7")\]$USER_COLOR\[$USER@
 source .bash_profile
 ```
 
-3. Update packages <br>
+## Configure Linux 
+Customize and execute the file `configure_linux.sh` <br> 
 
-```
-sudo apt update && sudo apt upgrade
-```
 
 4. Install dependencies <br>
 ```
-sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev && sudo apt install build-essential zlib1g-dev libffi-dev && sudo apt-get update -y && sudo apt-get install -y wget libczmq-dev curl libssl-dev git inetutils-telnet bind9utils freetds-dev libkrb5-dev libsasl2-dev libffi-dev libpq-dev freetds-bin build-essential default-libmysqlclient-dev apt-utils rsync zip unzip gcc && sudo apt-get clean
+
 ```
 
 ## Install Python from Source
-5. Download Python 3.10 source code <br>
-
-```
-wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
-```
-  
-6. Extract the downloaded archive <br>
-
-```
-tar -xf Python-3.10.0.tgz
-```
-
-7. Navigate to the Python source directory <br>
-
-```
-cd Python-3.10.0
-```
-   
-8. Configure the build <br>
-
-```
- ./configure --enable-optimizations
-```
- 
-9. Build and install Python <br>
-
-```
-make -j$(nproc)
-```
-
-```
-sudo make altinstall
-```
-   
-10. Verify the installation <br>
-
-```
-python3.10 --version
-```
-   
-11. Cleanup (optional) <br>
-
-```
-cd .. && sudo rm -rf Python-3.10.0 && sudo rm Python-3.10.0.tgz
-```
+Execute the file: `install_python_from_source.sh` <br>
 
 ## Configure the Linux ambient
 
-12. Create the ssh keys <br>
-
-```
-ssh-keygen -t ed25519 -C "your_email@example.com"
-```
-```
-git config --global user.email "you@example.com"
-```
-```
-git config --global user.name "Your Name"
-```
-13. Go to airflow directory <br>
-
-```
-sudo mkdir /home/<user>/airflow
-```
-```
-sudo chmod -R 777 /home/<user>/airflow
-```
-```
-sudo mkdir /home/<user>/airflow
-```
-
-14. Clone the Airflow project <br>
-
-```
-git clone git@github.com:saradfrz/world-wide-news.git .
-```
-```
-git config --global --add safe.directory /airflow
-```
 
 15. Install all tools and dependencies that can be required by Airflow <br>
 ```
